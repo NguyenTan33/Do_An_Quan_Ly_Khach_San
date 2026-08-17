@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="87f6b542aee449019347b746cb71fcc6" Name="Diagram1" ZoomLevel="80">
+        <EntityTypeShape EntityType="KhachSanModel.Booking" Width="1.5" PointX="2.625" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KhachSanModel.BookingService" Width="1.5" PointX="10.5" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KhachSanModel.Customer" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KhachSanModel.Floor" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KhachSanModel.Payment" Width="1.5" PointX="9.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KhachSanModel.Role" Width="1.5" PointX="12.625" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KhachSanModel.Room" Width="1.5" PointX="7.375" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KhachSanModel.RoomTransfer" Width="1.5" PointX="7.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KhachSanModel.Service" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="KhachSanModel.Staff" Width="1.5" PointX="17.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KhachSanModel.User" Width="1.5" PointX="15.125" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="KhachSanModel.FK__Bookings__Custom__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="KhachSanModel.FK__Bookings__RoomId__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="KhachSanModel.FK__BookingSe__Booki__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="KhachSanModel.FK__Payments__Bookin__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="KhachSanModel.FK__RoomTrans__Booki__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="KhachSanModel.FK__BookingSe__Servi__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="KhachSanModel.FK__Rooms__FloorId__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="KhachSanModel.FK__Users__RoleId__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="KhachSanModel.FK__RoomTrans__FromR__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="KhachSanModel.FK__RoomTrans__ToRoo__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="KhachSanModel.FK__Staff__UserId__3D5E1FD2" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

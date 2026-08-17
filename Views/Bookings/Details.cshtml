@@ -1,0 +1,66 @@
+﻿@model DoAnQuanLyKhachSan.Models.Booking
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Booking</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.CheckInDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CheckInDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CheckOutDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CheckOutDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Customer.FullName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Customer.FullName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Room.RoomNumber)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Room.RoomNumber)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.BookingId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

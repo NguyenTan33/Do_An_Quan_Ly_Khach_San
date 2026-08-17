@@ -1,0 +1,58 @@
+﻿@model DoAnQuanLyKhachSan.Models.Room
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Room</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.RoomNumber)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RoomNumber)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.RoomType)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RoomType)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Floor.FloorName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Floor.FloorName)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.RoomId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

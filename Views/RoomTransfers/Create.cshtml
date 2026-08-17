@@ -1,0 +1,23 @@
+﻿@model DoAnQuanLyKhachSan.Models.ViewModel.RoomTransferViewModel
+
+@{
+    ViewBag.Title = "Chuyển phòng";
+}
+
+<h2>Chuyển phòng</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken() 
+
+    @Html.HiddenFor(m => m.BookingId)
+    @Html.HiddenFor(m => m.FromRoomId)
+
+    <div class="form-group">
+        <label>Chọn phòng chuyển đến</label>
+        @Html.DropDownListFor(m => m.ToRoomId, Model.AvailableRooms, "Chọn phòng", new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Chuyển phòng</button>
+    <a href="@Url.Action("Index", "TongQuan")" class="btn btn-secondary">Hủy</a>
+}

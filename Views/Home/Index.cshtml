@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Trang chủ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Phần kiểm tra trạng thái đăng nhập -->
+@if (Session["UserId"] != null)
+{
+    <div class="alert alert-info">
+        Xin chào, <strong>@Session["Username"]</strong>!
+        <a href="@Url.Action("Logout", "Auth")" class="btn btn-sm btn-outline-danger ml-2">Đăng xuất</a>
+    </div>
+}
+else
+{
+    <div class="alert alert-warning">
+        Bạn chưa đăng nhập. <a href="@Url.Action("Login", "Auth")">Đăng nhập ngay</a>
+    </div>
+}
+
+<h2 class="mt-4">Chào mừng đến với hệ thống quản lý khách sạn</h2>
+
+<div class="row mt-4">
+    <div class="col-md-3">
+        <div class="card bg-primary text-white shadow p-3">
+            <h4>Tổng số phòng</h4>
+            <p>120</p>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-success text-white shadow p-3">
+            <h4>Phòng còn trống</h4>
+            <p>25</p>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-warning text-dark shadow p-3">
+            <h4>Khách đang thuê</h4>
+            <p>85</p>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-danger text-white shadow p-3">
+            <h4>Doanh thu hôm nay</h4>
+            <p>8,500,000 VNĐ</p>
+        </div>
+    </div>
+</div>
+
+
+

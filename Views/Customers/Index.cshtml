@@ -1,0 +1,51 @@
+﻿@model IEnumerable<DoAnQuanLyKhachSan.Models.Customer>
+
+@{
+
+    ViewBag.Title = "Quản lý khách hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Quản lý khách hàng</h2>
+        <div>
+            <a href="@Url.Action("TrangChu", "Home")" class="btn btn-secondary me-2">← Quay lại</a>
+            <a href="@Url.Action("Create", "Customers")" class="btn btn-primary">➕ Thêm khách hàng</a>
+        </div>
+    </div>
+
+    <table class="table table-bordered table-hover table-striped align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>Họ và tên</th>
+                <th>Số điện thoại</th>
+                <th>Email</th>
+                <th>Số CCCD </th>
+                <th>Địa chỉ</th>
+                <th class="text-center">Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.FullName</td>
+                    <td>@item.Phone</td>
+                    <td>@item.Email</td>
+                    <td>@item.IdentityNumber</td>
+                    <td>@item.Address</td>
+                    <td class="text-center">
+                        <a href="@Url.Action("Edit", "Customers", new { id = item.CustomerId })" class="btn btn-sm btn-warning me-1">✏️ Sửa</a>
+                        <a href="@Url.Action("Details", "Customers", new { id = item.CustomerId })" class="btn btn-sm btn-info me-1">🔍 Chi tiết</a>
+                        <a href="@Url.Action("Delete", "Customers", new { id = item.CustomerId })" class="btn btn-sm btn-danger">🗑️ Xóa</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

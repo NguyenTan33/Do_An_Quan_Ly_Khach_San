@@ -1,0 +1,110 @@
+﻿@model List<DoAnQuanLyKhachSan.Models.ViewModel.RoomOverviewViewModel>
+
+@{
+    ViewBag.Title = "Tổng quan tình trạng phòng";
+}
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+</head>
+
+<style>
+    .context-menu {
+        display: none;
+        position: absolute;
+        z-index: 1000;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        padding: 8px 0;
+        min-width: 150px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+        .context-menu a {
+            display: block;
+            padding: 8px 16px;
+            color: #333;
+            text-decoration: none;
+        }
+
+            .context-menu a:hover {
+                background-color: #f1f1f1;
+            }
+
+    .room-icon {
+        cursor: pointer;
+    }
+</style>
+
+<h2 class="mb-4">Hiển thị tổng quan</h2>
+
+@foreach (var tang in Model)
+{
+    var phongHienThi = tang.Phong
+        .Where(p => p.TrangThai == "Trống" || p.TrangThai == "Đang dùng")
+        .ToList();
+
+    if (!phongHienThi.Any())
+    {
+        continue;
+    }
+
+    <div class="mb-4 pb-2 border-bottom" style="border-color: #ccc;">
+        <h4 class="mt-3">@tang.TenTang</h4>
+        <div class="d-flex flex-wrap">
+            @foreach (var phong in phongHienThi)
+            {
+                var iconClass = phong.IsBooked ? "fa-solid fa-house text-danger" : "fa-solid fa-house text-success";
+
+                <div class="text-center m-2 room-icon"
+                     data-booking-id="@phong.BookingId"
+                     data-room-number="@phong.SoPhong">
+                    <i class="fas @iconClass" style="font-size: 48px;" title="@phong.TrangThai"></i>
+                    <div class="room-number">@phong.SoPhong</div>
+                </div>
+            }
+        </div>
+    </div>
+}
+
+<a href="@Url.Action("TrangChu", "Home")" class="btn btn-secondary me-2">← Quay lại</a>
+
+<!-- Menu chuột phải -->
+<div id="customContextMenu" class="context-menu">
+    <a href="#" id="bookingLink">Đặt phòng</a>
+    <a href="#" id="transferLink">Đổi phòng</a>
+    <a href="#" id="paymentLink">Thanh toán</a>
+</div>
+
+@section Scripts {
+    <script>
+        const contextMenu = document.getElementById("customContextMenu");
+        const bookingLink = document.getElementById("bookingLink");
+        const transferLink = document.getElementById("transferLink");
+        const paymentLink = document.getElementById("paymentLink");
+
+        document.addEventListener("contextmenu", function (e) {
+            const roomElement = e.target.closest(".room-icon");
+
+            if (roomElement) {
+                e.preventDefault();
+                const bookingId = roomElement.getAttribute("data-booking-id");
+                const roomNumber = roomElement.getAttribute("data-room-number");
+
+                // Gán lại URL cho các link
+                bookingLink.href = `/Bookings/Index`; 
+                transferLink.href = `/RoomTransfers/Create?bookingId=${bookingId}`;
+                paymentLink.href = `/Payments/Create?bookingId=${bookingId}`;
+
+                contextMenu.style.top = `${e.pageY}px`;
+                contextMenu.style.left = `${e.pageX}px`;
+                contextMenu.style.display = "block";
+            } else {
+                contextMenu.style.display = "none";
+            }
+        });
+
+        document.addEventListener("click", function () {
+            contextMenu.style.display = "none";
+        });
+    </script>
+}
