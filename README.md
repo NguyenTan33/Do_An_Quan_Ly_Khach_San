@@ -24,7 +24,7 @@
 
 ### 1. 📊 Sơ Đồ Phòng & Trạng Thái Theo Thời Gian Thực (Room Status Matrix)
 - **Giao diện Ma trận Phòng theo Tầng**: Hiển thị danh sách tất cả các tầng và phòng trực quan.
-- **Tự động nhận diện trạng thái**: Hệ thống tự động truy vấn khoảng thời gian CheckInDate - CheckOutDate để đánh dấu phòng **Trống** hoặc **Đang có khách lưu trú**.
+- **Tự động nhận diện trạng thái**: Hệ thống tự động truy vấn khoảng thời gian `CheckInDate` - `CheckOutDate` để đánh dấu phòng **Trống** hoặc **Đang có khách lưu trú**.
 
 ### 2. 🛎️ Quản Lý Đặt Phòng & Check-in / Check-out (Booking Management)
 - Tạo đơn đặt phòng mới cho khách hàng với đầy đủ thông tin lưu trú.
@@ -34,7 +34,7 @@
 ### 3. 🔄 Chuyển Phòng & Ghi Vết Lịch Sử (Room Transfer & Audit Log)
 - Cho phép chuyển khách đang lưu trú sang phòng trống khác theo yêu cầu.
 - **Chống trùng lịch (Overlap Prevention)**: Tự động lọc và chỉ hiển thị các phòng trống khả dụng trong khoảng thời gian hiện tại.
-- **Lưu vết lịch sử (RoomTransfer)**: Ghi lại lịch sử chuyển phòng (Phòng cũ, phòng mới, thời gian chuyển, ghi chú) giúp quản lý dễ dàng đối soát.
+- **Lưu vết lịch sử (`RoomTransfer`)**: Ghi lại lịch sử chuyển phòng (Phòng cũ, phòng mới, thời gian chuyển, ghi chú) giúp quản lý dễ dàng đối soát.
 
 ### 4. 🍸 Quản Lý Dịch Vụ Đi Kèm (Services Aggregation)
 - Quản lý danh mục dịch vụ (Nước uống, đồ ăn, giặt ủi...).
@@ -51,14 +51,14 @@
 ### **Backend**
 - **Ngôn ngữ**: C# (.NET Framework 4.7.2 / 4.8)
 - **Framework**: ASP.NET MVC 5
-- **ORM**: Entity Framework 6 (Database First Model .edmx)
+- **ORM**: Entity Framework 6 (Database First Model `.edmx`)
 - **Truy vấn**: LINQ (Language Integrated Query)
 
 ### **Database**
 - **CSDL**: Microsoft SQL Server (SSMS)
 
 ### **Frontend**
-- **View Engine**: Razor View Engine (.cshtml)
+- **View Engine**: Razor View Engine (`.cshtml`)
 - **UI Framework**: HTML5, CSS3, Bootstrap 5
 - **Scripting**: JavaScript, jQuery
 
@@ -67,18 +67,18 @@
 ## 🏗️ Kiến Trúc & Thiết Kế
 
 - **Mô hình MVC (Model-View-Controller)**: Phân tách rõ ràng giữa Dữ liệu (Model), Giao diện (View) và Luồng xử lý nghiệp vụ (Controller).
-- **Mô hình ViewModel (RoomOverviewViewModel, RoomTransferViewModel)**: Tách biệt hoàn toàn dữ liệu CSDL với dữ liệu hiển thị trên View, giúp bảo mật (chống Overposting) và tăng khả năng mở rộng.
+- **Mô hình ViewModel (`RoomOverviewViewModel`, `RoomTransferViewModel`)**: Tách biệt hoàn toàn dữ liệu CSDL với dữ liệu hiển thị trên View, giúp bảo mật (chống Overposting) và tăng khả năng mở rộng.
 - **Kiến trúc CSDL Quan hệ (Relational Database)**:
-  - Floors (1) ─── (N) Rooms
-  - Customers (1) ─── (N) Bookings ─── (1) Rooms
-  - Bookings (1) ─── (N) RoomTransfers
-  - Bookings (1) ─── (N) BookingServices ─── (1) Services
+  - `Floors` (1) ─── (N) `Rooms`
+  - `Customers` (1) ─── (N) `Bookings` ─── (1) `Rooms`
+  - `Bookings` (1) ─── (N) `RoomTransfers`
+  - `Bookings` (1) ─── (N) `BookingServices` ─── (1) `Services`
 
 ---
 
 ## 📁 Cấu Trúc Dự Án
 
-`	ext
+```text
 DoAnQuanLyKhachSan/
 ├── App_Start/              # Cấu hình Route, Bundle, Filter
 ├── Content/                # File CSS, Bootstrap, Hình ảnh tĩnh
@@ -108,7 +108,7 @@ DoAnQuanLyKhachSan/
 ├── DoAnQuanLyKhachSan.sln  # Visual Studio Solution File
 ├── Web.config              # Cấu hình chuỗi kết nối CSDL & hệ thống
 └── README.md
-`
+```
 
 ---
 
@@ -122,22 +122,22 @@ DoAnQuanLyKhachSan/
 ### 2. Các Bước Cài Đặt
 
 1. **Clone Repository về máy local**:
-   `ash
-   git clone https://github.com/NguyenTan33/Do_An_Quan_Ly_Khach_San.git
-   cd Do_An_Quan_Ly_Khach_San
-   `
+```bash
+git clone https://github.com/NguyenTan33/Do_An_Quan_Ly_Khach_San.git
+cd Do_An_Quan_Ly_Khach_San
+```
 
 2. **Cấu hình Cơ sở dữ liệu (Database Setup)**:
-   - Mở **SSMS** và import/tạo CSDL QL_KhachSan (khởi tạo các bảng Floors, Rooms, Bookings, Customers, Services, RoomTransfers...).
+   - Mở **SSMS** và import/tạo CSDL `QL_KhachSan` (khởi tạo các bảng `Floors`, `Rooms`, `Bookings`, `Customers`, `Services`, `RoomTransfers`...).
 
 3. **Cấu hình Connection String**:
-   - Mở file Web.config trong thư mục gốc dự án.
-   - Cập nhật chuỗi kết nối KhachSanEntities phù hợp với SQL Server của bạn.
+   - Mở file `Web.config` trong thư mục gốc dự án.
+   - Cập nhật chuỗi kết nối `KhachSanEntities` phù hợp với SQL Server của bạn.
 
 4. **Chạy Dự Án**:
-   - Mở file DoAnQuanLyKhachSan.sln bằng Visual Studio 2022.
+   - Mở file `DoAnQuanLyKhachSan.sln` bằng Visual Studio 2022.
    - Nhấn **Restore NuGet Packages** (nếu cần).
-   - Nhấn F5 hoặc nút **Start** (IIS Express) để khởi chạy ứng dụng trên trình duyệt!
+   - Nhấn `F5` hoặc nút **Start** (IIS Express) để khởi chạy ứng dụng trên trình duyệt!
 
 ---
 
